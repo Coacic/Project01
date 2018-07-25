@@ -5,24 +5,46 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
     public float forwardForce = 25f;
-    public float sidewaysForce = 0f;
+    private float sidewaysForce = 1f;
+
+    public float SidewaysForce
+    {
+        get
+        {
+            return sidewaysForce;
+        }
+
+        set
+        {
+            sidewaysForce = value;
+        }
+    }
+
+    public float SidewaysForce1
+    {
+        get
+        {
+            return sidewaysForce;
+        }
+
+        set
+        {
+            sidewaysForce = value;
+        }
+    }
 
     void FixedUpdate ()
     {
-
-        if (Input.GetKey("w"))
-        {
-            rb.AddForce(0, 0, forwardForce);
-        }
+     rb.AddForce(0, 0, z: 25f);
 
         if (Input.GetKey("d"))
         {
-            rb.AddForce(sidewaysForce, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(SidewaysForce, 0, 0, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("a"))
         {
-            rb.AddForce(-sidewaysForce, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(-SidewaysForce, 0, 0, ForceMode.VelocityChange);
         }
 
         if (rb.position.y < -1f)
